@@ -33,6 +33,12 @@
                 ckj->len += amount; \
 } while(0)
 
+// Enum that represents cook types and data types
+typedef enum
+{
+
+} CookElem;
+
 // Main object structure that houses binary elements.
 typedef struct
 {

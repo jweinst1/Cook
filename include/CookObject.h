@@ -10,6 +10,8 @@
 
 #define CookObject_SPACE(ckj) (ckj->cap - ckj->len)
 
+#define CookObject_FULL(ckj) (ckj->cap <= ckj->len)
+
 #define CookObject_FITS(ckj, size) (size < (ckj->cap - ckj->len))
 
 // Resets the object to overwrite old memory.
@@ -33,10 +35,18 @@
                 ckj->len += amount; \
 } while(0)
 
+#define CookObject_PUT(ckj, byte) do { \
+                if(CookObject_FULL(ckj)) CookObject_DBL_SIZE(ckj); \
+                ckj->items[ckj->len++] = byte; \
+} while(0)
+
 // Enum that represents cook types and data types
 typedef enum
 {
-
+        CookElem_stop,
+        CookElem_add,
+        CookElem_add_int,
+        CookElem_int
 } CookElem;
 
 // Main object structure that houses binary elements.

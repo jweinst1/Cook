@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define CookObject_START_SZ 30
+
 #define CookObject_SIZE(ckj) (sizeof(CookObject) + ckj->cap)
 
 #define CookObject_ALLOC(capSize) (malloc(sizeof(CookObject) + capSize))

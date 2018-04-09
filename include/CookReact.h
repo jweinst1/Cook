@@ -6,4 +6,7 @@
 
 // Header for reacting cook objects.
 
+
+CookObject* CookObject_react(CookObject* ckj1, CookObject* ckj2);
+
 #endif

@@ -15,7 +15,8 @@
 
 typedef enum
 {
-        CookElem_int
+        CookElem_int,
+        CookElem_plus
 } CookElem;
 
 // Counter struct that allows the multiplicties of elements to be counted

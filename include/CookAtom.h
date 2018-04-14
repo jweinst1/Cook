@@ -2,38 +2,36 @@
 #define COOK_ATOM_HEAD
 // Cook Atom, smallest unit of value in cook language.
 
-// to imitate real compounds, atoms are analogous to primitive types, like integers, booleans, strings etc.
+#include <stdlib.h>
+#include "CookElem.h"
 
-// Allows multi-typed casting and polymorphism between atoms
-#define CookAtom_BASE CookElement elem;
+// Base struct signifier for polymorphism
+// This may at some point hold more modifiers
+#define CookAtom_BASE CookElem elem;
 
-// An element represents the type of an atom.
-typedef enum
+// Macro to make a base atom with some element.
+#define CookAtom_MAKE(ptr, element) \
+        ptr = malloc(sizeof(CookAtom)); \
+        ptr->elem = element
+
+typedef struct
 {
-        CookElement_Int,
-        CookElement_Add
-} CookElement;
-
-// Base Atom type for polymorphic repr
-struct CookAtom
-{
+        // Always at top of struct for same byte offset
         CookAtom_BASE
-};
-typedef struct CookAtom CookAtom;
+} CookAtom;
 
-
-struct CookAtom_int
+typedef struct
 {
         CookAtom_BASE
         int val;
-};
-typedef struct CookAtom_int CookAtom_int;
+} CookAtom_int;
 
-struct CookAtom_add
+typedef struct
 {
         CookAtom_BASE
-};
-typedef struct CookAtom_add CookAtom_add;
+} CookAtom_plus;
 
+
+CookAtom* CookAtom_new_int(int amount);
 
 #endif

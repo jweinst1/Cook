@@ -29,9 +29,11 @@
         atom->next = NULL; \
         atom->prev = NULL
 
-#define CookAtomList_NULL(cal) \
+// Completely clears an atom list
+#define CookAtomList_CLEAR(cal) \
         cal->front = NULL; \
-        cal->back = NULL
+        cal->back = NULL; \
+        cal->len = 0
 
 struct CookAtom
 {
@@ -60,5 +62,11 @@ typedef struct
 } CookAtomList;
 
 CookAtom* CookAtom_new_int(int amount);
+
+//Appends a new atom to the back of the list.
+void CookAtomList_append(CookAtomList* cal, CookAtom* ca);
+
+//pops the last item on the list.
+CookAtom* CookAtomList_pop(CookAtomList* cal);
 
 #endif

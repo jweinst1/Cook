@@ -15,7 +15,16 @@ typedef struct
         CookAtomList atoms[CookElem_MAX];
 } CookCompound;
 
+// Calculates the reactive score of the compound.
+int CookCompound_score(CookCompound* comp);
+
 // Returns most reactive element in the compound.
 int CookCompound_most_r(CookCompound* comp);
+
+// Pops and returns an atom of some element.
+CookAtom* CookCompound_get(CookCompound* comp, CookElem elem);
+
+// Cleans the memory for the atom lists.
+void CookCompound_clean(CookCompound* comp);
 
 #endif

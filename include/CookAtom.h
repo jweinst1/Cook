@@ -62,10 +62,14 @@ typedef struct
 
 CookAtom* CookAtom_new_int(int amount);
 
+CookAtom* CookAtom_new_plus(void);
+
 //Appends a new atom to the back of the list.
 void CookAtomList_append(CookAtomList* cal, CookAtom* ca);
 
 //pops the last item on the list.
 CookAtom* CookAtomList_pop(CookAtomList* cal);
+
+void CookAtomList_del(CookAtomList* cal);
 
 #endif

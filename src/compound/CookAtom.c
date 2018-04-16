@@ -9,6 +9,14 @@ CookAtom* CookAtom_new_int(int amount)
         return (CookAtom*)newatom;
 }
 
+CookAtom* CookAtom_new_plus(void)
+{
+        CookAtom_plus* newatom = malloc(sizeof(CookAtom_plus));
+        CookAtom_NULL(newatom);
+        newatom->elem = CookElem_plus;
+        return (CookAtom*)newatom;
+}
+
 void CookAtomList_append(CookAtomList* cal, CookAtom* ca)
 {
         switch(cal->len)
@@ -50,4 +58,14 @@ CookAtom* CookAtomList_pop(CookAtomList* cal)
         }
 
         return popped;
+}
+
+void CookAtomList_del(CookAtomList* cal)
+{
+        CookAtom* traverse = cal->front;
+        while(traverse != NULL)
+        {
+                free(traverse);
+                traverse = traverse->next;
+        }
 }

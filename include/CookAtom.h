@@ -2,14 +2,13 @@
 #define COOK_ATOM_HEAD
 // Cook Atom, smallest unit of value in cook language.
 
-#include <stdlib.h>
 #include "CookElem.h"
 
 // Base struct signifier for polymorphism
 // This may at some point hold more modifiers
 #define CookAtom_BASE CookElem elem; \
-        struct CookElem* prev; \
-        struct CookElem* next;
+        struct CookAtom* prev; \
+        struct CookAtom* next;
 
 // Macro to make a base atom with some element.
 #define CookAtom_MAKE(ptr, element) \
